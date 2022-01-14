@@ -5,6 +5,7 @@
 
     您可以假设除了数字 0 之外，这两个数都不会以 0 开头。
 */
+//时间复杂度 O(max(m,n)) m, n为两个链表的长度
 class ListNode {
 	constructor(val) {
 		this.val = val
