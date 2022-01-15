@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        class ListNode {
+            constructor(val) {
+                this.val = val
+                this.next = null
+            }
+        }
+        let l1 = new ListNode(1)
+        let l2 = new ListNode(2)
+        let l3 = new ListNode(3)
+        let l4 = new ListNode(4)
+        let l5 = new ListNode(5)
+        l1.next = l2
+        l2.next = l3
+        l3.next = l4
+        l4.next = l5
+        l5.next=l1
+
+        /*
+        
+        给你一个链表的头节点 head ，判断链表中是否有环。
+        如果链表中有某个节点，可以通过连续跟踪 next 指针再次到达，则链表中存在环。 为了表示给定链表中的环，评测系统内部使用整数 pos 来表示链表尾连接到链表中的位置（索引从 0 开始）。如果 pos 是 -1，则在该链表中没有环。注意：pos 不作为参数进行传递，仅仅是为了标识链表的实际情况。
+
+        如果链表中存在环，则返回 true 。 否则，返回 false 。
+        
+        */
+        // 时间复杂度：O(n)
+        // 空间复杂度: O(1)
+        var hasCycle = function (head) {
+            if(!head || !head.val || !head.next){
+                return false
+            }
+            let slow  = head
+            let fast = head.next
+            while (fast && fast.next) {
+                if (slow == fast) {
+                    return true
+                }
+                slow = slow.next
+                fast = fast.next.next
+            }
+            return false
+        };
+        console.log(hasCycle(l1))
+    </script>
+</body>
+
+</html>
