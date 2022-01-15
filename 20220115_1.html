@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        class ListNode {
+            constructor(val) {
+                this.val = val
+                this.next = null
+            }
+        }
+        let l1 = new ListNode(1)
+        let l2 = new ListNode(2)
+        let l3 = new ListNode(3)
+        let l4 = new ListNode(4)
+        let l5 = new ListNode(5)
+        l1.next = l2
+        l2.next = l3
+        l3.next = l4
+        l4.next = l5
+
+        
+        // 给你单链表的头节点 head ，请你反转链表，并返回反转后的链表
+        var reverseList = function (head) {
+            let prev = null
+            let tmp = head
+            while (tmp) {
+                const next = tmp.next
+                tmp.next = prev
+                prev = tmp
+                tmp = next
+            }
+            return prev
+        };
+        console.log(reverseList(l1))
+    </script>
+</body>
+
+</html>
