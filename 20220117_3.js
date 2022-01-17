@@ -5,7 +5,7 @@
 // getMin() —— 检索栈中的最小元素。
 
 //使用辅助栈
-//time: O(n)
+//time: O(1)
 //space: O(n)
 var MinStack = function () {
 	this.stack1 = []
