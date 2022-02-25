@@ -1,5 +1,5 @@
 //排序算法
-let arr = [4, 5, 6, 3, 2, 1]
+let arr = [4, 6, 5, 1, 3, 2]
 const length = arr.length
 
 //冒泡排序
@@ -57,8 +57,27 @@ function insertSort(arr, n) {
 // 最坏情况时间复杂度  O(n2)
 // 原地排序算法
 // 不稳定排序算法
+//比如 5，8，5，2，9 这样一组数据，使用选择排序算法来排序的话，第一次找到最小元素 2，与第一个 5 交换位置，那第一个 5 和中间的 5 顺序就变了，所以就不稳定了。正是因此，相对于冒泡排序和插入排序，选择排序就稍微逊色了。
+function selectSort(arr, n) {
+	let tmp
+	for (let i = 0; i < n; i++) {
+		let min = i
+		for (let j = i + 1; j < n; j++) {
+			if (arr[j] < arr[min]) {
+				min = j
+			}
+		}
+		if (min !== i) {
+			tmp = arr[i]
+			arr[i] = arr[min]
+			arr[min] = tmp
+		}
+	}
+}
+// selectSort(arr, length)
+// console.log(arr)
 
-// 选择排序
+// 合并排序
 // 最好情况时间复杂度 O(nlogn)
 // 最坏情况时间复杂度  O(nlogn)
 // 非原地排序算法
@@ -95,11 +114,14 @@ function mergeSort(arr) {
 		}
 		t = 0
 		while (left <= right) {
+			console.log(tmp,'tmp')
 			arr[left++] = tmp[t++]
+			console.log(arr,'arr')
+
 		}
 	}
 }
-// mergeSort(arr, length)
+mergeSort(arr, length)
 // console.log(arr, "1111")
 
 // 快速排序
@@ -115,10 +137,10 @@ function quikSort(arr, left, right) {
 		let base = arr[left]
 		let tmp
 		while (i != j) {
-			while (arr[j] >= base && j>i) {
+			while (arr[j] >= base && j > i) {
 				j--
 			}
-			while (arr[i] <= base && j>i) {
+			while (arr[i] <= base && j > i) {
 				i++
 			}
 			if (j > i) {
@@ -131,9 +153,9 @@ function quikSort(arr, left, right) {
 		arr[j] = base
 		quikSort(arr, left, j - 1)
 		quikSort(arr, j + 1, right)
-	}else {
+	} else {
 		return
 	}
 }
-quikSort(arr, 0, arr.length - 1)
-console.log(arr)
+// quikSort(arr, 0, arr.length - 1)
+// console.log(arr)
