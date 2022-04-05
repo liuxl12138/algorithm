@@ -131,11 +131,14 @@ mergeSort(arr, length)
 // 不稳定排序算法,有可能改变相同元素的位置
 
 function quikSort(arr, left, right) {
+	//知道 left 和right相等，就是left和right是同一个数，也就是只剩下一个数时结束
 	if (left < right) {
 		let i = left
 		let j = right
 		let base = arr[left]
 		let tmp
+
+		//交换元素
 		while (i != j) {
 			while (arr[j] >= base && j > i) {
 				j--
@@ -149,8 +152,11 @@ function quikSort(arr, left, right) {
 				arr[j] = tmp
 			}
 		}
+		//i 和 j相等了，把基准数交换
 		arr[left] = arr[j]
 		arr[j] = base
+
+		//递归对左右两部分数据进行排序
 		quikSort(arr, left, j - 1)
 		quikSort(arr, j + 1, right)
 	} else {
