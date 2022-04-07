@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /**
+         * 时间复杂度 O(n) 只需要遍历一遍数组
+         * 空间复杂度 O(n)
+        */
+        var getSmallestString = function (n, k) {
+            //先将数组用a填满
+            let arr = Array(n).fill("a")
+            //因为a的值被视为1，所以剩余要填充的值为k-n
+            let remain = k - n
+            //从最后一位进行贪心
+            let i = n - 1
+            while (remain) {
+                if (remain > 25) {
+                    arr[i] = 'z'
+                    remain -= 25
+                    i--
+                } else {
+                    arr[i] = String.fromCharCode(97 + remain)
+                    remain = 0
+                    i--
+                }
+            }
+            return arr.join('')
+        };
+    </script>
+</body>
+
+</html>

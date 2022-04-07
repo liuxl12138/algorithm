@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /**
+         * 利用数组进行剪枝
+         * 
+         * 时间复杂度 O(1) 因为数组大小已经确定
+         * 空间复杂度 O(1) 因为数组大小已经确定
+         * @param {character[][]} board
+         * @return {boolean}
+         */
+        var isValidSudoku = function (board) {
+
+            //rows 记录行
+            //cols 记录列
+            //subbox 记录  3 * 3
+            let rows = new Array(9).fill(0).map(() => new Array(9).fill(0))
+            let cols = new Array(9).fill(0).map(() => new Array(9).fill(0))
+            let subboxs = new Array(9).fill(0).map(() => new Array(9).fill(0).map(() => new Array(9).fill(0)))
+            for (let i = 0; i < 9; i++) {
+                for (let j = 0; j < 9; j++) {
+                    let c = board[i][j]
+                    if (c !== '.') {
+                        //字符转为数组下标
+                        let index = Number(c) - 1
+                        let subI = Math.floor(i / 3)
+                        let subJ = Math.floor(j / 3)
+                        rows[i][index]++
+                        cols[j][index]++
+                        subboxs[subI][subJ][index]++
+                        //大于1说明不符合条件
+                        if (rows[i][index] > 1 || cols[j][index] > 1 || subboxs[subI][subJ][index] > 1) {
+                            return false
+                        }
+                    }
+                }
+            }
+            return true
+        };
+    </script>
+</body>
+
+</html>
