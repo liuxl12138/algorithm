@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //时间复杂度:O(n)
+        //空间复杂度:O(1)
+        var maxSubArray = function (nums) {
+            if (!nums.length) {
+                return
+            }
+            let max_num_here = nums[0]
+            let result = nums[0]
+            let n = nums.length
+            for (let i = 1; i < n; i++) {
+                //以nums[i]为终点的子数组的最大和
+                max_num_here = Math.max(nums[i], max_num_here + nums[i])
+
+                result = Math.max(max_num_here, result)
+            }
+            return result
+        }
+    </script>
+</body>
+
+</html>

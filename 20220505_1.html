@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var mergeTrees = function (root1, root2) {
+            if (!root1) {
+                return root2
+            }
+            if (!root2) {
+                return root1
+            }
+
+            let t = new TreeNode(root1.val + root2.val)
+            t.left = mergeTrees(root1.left, root2.left)
+            t.right = mergeTrees(root1.right, root2.right)
+            return t
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        //时间复杂度:O(n2)
+        //空间复杂度:O(1)
+        var longestPalindrome = function (s) {
+            let n = s.length
+            let subStrLen = 0, tmpLeft = 0, tmpRight = 0
+            //一共有2*n-1个中心点
+            for (let i = 0; i < 2 * n - 1; i++) {
+                let left = Math.floor(i / 2), right = Math.floor(i / 2 + i % 2)
+                while (
+                    left >= 0 && right < n && s.charAt(left) === s.charAt(right)
+                ) {
+                    left--
+                    right++
+                }
+                if (right - left > subStrLen) {
+                    subStrLen = right - left
+                    tmpLeft = left
+                    tmpRight = right
+                }
+            }
+            //slice方法:包括left，不包括right，所以left需要往前移动一位
+            return s.slice(++tmpLeft, tmpRight)
+        };
+        console.log(longestPalindrome("cbbd"))
+    </script>
+</body>
+
+</html>
