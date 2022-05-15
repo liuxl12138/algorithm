@@ -9,6 +9,7 @@ var lengthOfLongestSubstring = function (s) {
   let rightPoint = 0,
     result = 0;
   const set = new Set();
+  
   for (let i = 0; i < len; i++) {
     const chars = s.charAt(i - 1);
     //左指针向右移动，set删除一个字符

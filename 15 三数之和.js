@@ -1,12 +1,8 @@
 /**
  * 题目描述:
- * 给定一个长度为 n 的整数数组 height 。有 n 条垂线，第 i 条线的两个端点是 (i, 0) 和 (i, height[i]) 。
+ * 给你一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b + c = 0 ？请你找出所有和为 0 且不重复的三元组。
 
-    找出其中的两条线，使得它们与 x 轴共同构成的容器可以容纳最多的水。
-
-    返回容器可以储存的最大水量。
-
- * 解题思路:https://leetcode-cn.com/problems/validate-binary-search-tree/solution/yan-zheng-er-cha-sou-suo-shu-by-leetcode-solution/
+ * 解题思路:
  */
 
 //时间复杂度:O(n2)
